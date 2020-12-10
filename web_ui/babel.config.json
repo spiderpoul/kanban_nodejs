@@ -1,7 +1,19 @@
 {
-    "presets": ["@babel/preset-env", "@babel/preset-typescript"],
+    "presets": [
+        ["@babel/preset-env", { "useBuiltIns": "entry", "corejs": 3 }],
+        "@babel/preset-typescript"
+    ],
     "plugins": [
         "@babel/proposal-class-properties",
-        "@babel/proposal-object-rest-spread"
+        "@babel/proposal-object-rest-spread",
+        [
+            "@babel/plugin-transform-runtime",
+            {
+                "corejs": false,
+                "helpers": true,
+                "regenerator": true,
+                "useESModules": false
+            }
+        ]
     ]
 }

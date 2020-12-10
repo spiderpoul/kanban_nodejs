@@ -5,6 +5,9 @@ let tasks = [
     { id: 0, task: "clean home", boardId: 0 },
     { id: 1, task: "do home work", boardId: 0 },
     { id: 2, task: "learn JavaScript", boardId: 0 },
+    { id: 3, task: "learn NodeJS", boardId: 1 },
+    { id: 4, task: "learn TS", boardId: 1 },
+    { id: 5, task: "learn React", boardId: 1 },
 ];
 
 router.get("/tasks", function (req, res, next) {
@@ -44,6 +47,14 @@ const boards = [
 
 router.get("/boards", function (req, res, next) {
     res.send(boards);
+});
+
+router.get("/boards/:id/tasks/search", function (req, res, next) {
+    res.send(
+        tasks
+            .filter((item) => `${item.boardId}` === req.params.id)
+            .filter((task) => task.task.includes(text))
+    );
 });
 
 module.exports = router;
