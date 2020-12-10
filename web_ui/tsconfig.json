@@ -15,7 +15,7 @@
     "isolatedModules": false,
     "noEmit": true,
     "experimentalDecorators": true,
-    "baseUrl": "."    
+    "baseUrl": "."
   },
   "include": [
     "./"

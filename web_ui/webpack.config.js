@@ -11,6 +11,7 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         port: 8000,
+        open: true,
         proxy: {
             "/api": {
                 target: "http://localhost:3000",
@@ -26,7 +27,10 @@ module.exports = {
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: ["@babel/preset-env"],
+                        presets: [
+                            "@babel/preset-env",
+                            "@babel/preset-typescript",
+                        ],
                     },
                 },
             },
@@ -36,10 +40,10 @@ module.exports = {
                     "style-loader",
                     {
                         loader: "css-loader",
-                        options: {                            
+                        options: {
                             modules: {
                                 auto: /\.module\.\w+$/i,
-                                exportLocalsConvention: 'camelCase',
+                                exportLocalsConvention: "camelCase",
                                 localIdentName:
                                     "[path][name]__[local]--[hash:base64:5]",
                             },
@@ -50,35 +54,34 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                  // Creates `style` nodes from JS strings
-                  "style-loader",
-                  // Translates CSS into CommonJS
-                  {
-                    loader: "css-loader",
-                    options: {                            
-                        modules: {
-                            compileType: 'module',
-                            localIdentName:
-                                "[path][name]__[local]--[hash:base64:5]",
+                    // Creates `style` nodes from JS strings
+                    "style-loader",
+                    // Translates CSS into CommonJS
+                    {
+                        loader: "css-loader",
+                        options: {
+                            modules: {
+                                compileType: "module",
+                                localIdentName:
+                                    "[path][name]__[local]--[hash:base64:5]",
+                            },
                         },
                     },
-                },
-                  // Compiles Sass to CSS
-                  "sass-loader",
+                    // Compiles Sass to CSS
+                    "sass-loader",
                 ],
-              },
+            },
             {
                 test: /\.(png|jpe?g|gif|eot|svg|ttf|woff|woff2)$/i,
                 use: [
                     {
                         loader: "file-loader",
-                        
                     },
                 ],
             },
         ],
     },
     resolve: {
-        extensions: ["ts", ".js"],
+        extensions: [".ts", ".js"],
     },
 };
