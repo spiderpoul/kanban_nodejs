@@ -10,7 +10,6 @@ module.exports = {
     plugins: [new HtmlWebpackPlugin()],
     devServer: {
         contentBase: path.join(__dirname, "dist"),
-        compress: true,
         port: 8000,
         proxy: {
             "/api": {
@@ -22,7 +21,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.m?ts$/,
+                test: /\.(ts|js)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
@@ -33,19 +32,53 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: ["style-loader", "css-loader"],
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: {                            
+                            modules: {
+                                auto: /\.module\.\w+$/i,
+                                exportLocalsConvention: 'camelCase',
+                                localIdentName:
+                                    "[path][name]__[local]--[hash:base64:5]",
+                            },
+                        },
+                    },
+                ],
             },
             {
-              test: /\.(png|jpe?g|gif|eot|svg|ttf|woff|woff2)$/i,
-              use: [
-                {
-                  loader: 'file-loader',
+                test: /\.s[ac]ss$/i,
+                use: [
+                  // Creates `style` nodes from JS strings
+                  "style-loader",
+                  // Translates CSS into CommonJS
+                  {
+                    loader: "css-loader",
+                    options: {                            
+                        modules: {
+                            compileType: 'module',
+                            localIdentName:
+                                "[path][name]__[local]--[hash:base64:5]",
+                        },
+                    },
                 },
-              ],
+                  // Compiles Sass to CSS
+                  "sass-loader",
+                ],
+              },
+            {
+                test: /\.(png|jpe?g|gif|eot|svg|ttf|woff|woff2)$/i,
+                use: [
+                    {
+                        loader: "file-loader",
+                        
+                    },
+                ],
             },
         ],
     },
     resolve: {
-        extensions: [".tsx", ".ts", ".js"],
+        extensions: ["ts", ".js"],
     },
 };
