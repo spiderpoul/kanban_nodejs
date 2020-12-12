@@ -1,0 +1,22 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{ board.title }}</h3>
+  </div>
+  <div class="input-group">
+    <input
+      class="form-control"
+      placeholder="find task"
+      [(ngModel)]="filter"
+      (input)="onFilterChange()"
+    />
+  </div>
+  <div class="panel-body" *ngFor="let task of tasks">
+    <div class="list-group-item">{{ task.task }}</div>
+  </div>
+  <div class="input-group">
+    <input class="form-control" placeholder="add new task" />
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary">Add</button>
+    </div>
+  </div>
+</div>

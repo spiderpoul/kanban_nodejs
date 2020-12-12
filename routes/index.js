@@ -49,7 +49,8 @@ router.get("/boards", function (req, res, next) {
     res.send(boards);
 });
 
-router.get("/boards/:id/tasks/search", function (req, res, next) {
+router.post("/boards/:id/tasks/search", function (req, res, next) {
+    const text = req.body.text;
     res.send(
         tasks
             .filter((item) => `${item.boardId}` === req.params.id)
