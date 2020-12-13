@@ -14,7 +14,7 @@ export class Model {
         }).then((res) => res.json());
 
     filterTasks = (id, text) =>
-        fetch("/api/tasks/search", {
+        fetch(`/api/boards/${id}/tasks/search`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
