@@ -1,0 +1,9 @@
+.panel-body {
+  padding: 0;
+}
+
+.input-group {
+  display: flex;
+  padding: 15px;
+}
+
