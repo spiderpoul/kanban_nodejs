@@ -6,3 +6,159 @@
   display: flex;
   padding: 15px;  
 }
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.doc_header {/*применяем стили к header*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 55px;
+  background: #0067A3;
+}
+
+.app_logo {
+  display: flex;
+  align-items: center;
+  margin-left: 14px;
+}
+
+.span_logo {
+  font-size: 28px;
+  line-height: 33px;
+  margin-left: 8px;
+  color: #FFFFFF;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 45px;
+  height: 45px;
+}
+
+.menu_item {
+  display: flex;
+  align-items: center;
+  height: 10px;
+}
+
+.menu_item svg {
+  margin-right: 3px;
+}
+
+.menu_create-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 33px;
+}
+
+.create-list {
+  display: flex;
+  align-items: center;
+  width: 181px;
+  height: 100%;
+  margin-right: 50px;
+  border-radius: 5px;
+  background: #FFFFFF;
+}
+
+.create-list svg {
+  margin-left: 9px;
+  margin-right: 13px;
+}
+
+.span_create_list {
+  font-size: 18px;
+  line-height: 21px;
+  color: #000000;
+}
+
+.user_menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+}
+
+.user-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+.arrow_down {
+  margin-left: 6px;
+}
+
+.list { /*применяем стили к выпадающему меню*/
+  position: absolute;
+  width: 95px;
+  top: 55px;
+  right: 5px;
+  list-style: none;
+}
+
+.li_list {
+  cursor: pointer;
+  line-height: 30px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  text-align: center;
+  background-color: #fefefe;
+}
+
+.li_list:hover {
+  color: #0067A3;
+}
+
+.svg_image_active {
+  transform: rotate(180deg);
+}
+
+.doc_footer { /*применяем стили к footer*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 55px;
+  background: #0067A3;
+}
+
+.tasks {
+  margin-left: 67px;
+}
+
+.span_tasks {
+  margin-right: 36px;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+}
+
+.span_footer {
+  margin-right: 24px;
+  line-height: 21px;
+  font-size: 18px;
+  color: #FFFFFF;
+}
+
+.container {
+  height: 550px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
