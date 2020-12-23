@@ -60,7 +60,6 @@ class Board {
                     <button data-id="submit" class="btn btn-outline-secondary">Add</button>
                   </div>
                 </div>
-                
               </div>     
                      
             `,
