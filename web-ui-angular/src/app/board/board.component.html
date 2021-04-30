@@ -14,9 +14,15 @@
     <div class="list-group-item">{{ task.task }}</div>
   </div>
   <div class="input-group">
-    <input class="form-control" placeholder="add new task" />
+    <input
+      class="form-control"
+      [(ngModel)]="inputAddTask"
+      placeholder="add new task"
+    />
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary">Add</button>
+      <button class="btn btn-outline-secondary" (click)="onAddClick()">
+        Add
+      </button>
     </div>
   </div>
 </div>

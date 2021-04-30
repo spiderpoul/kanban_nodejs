@@ -10,6 +10,7 @@ export class BoardComponent implements OnInit {
   @Input() board;
   tasks;
   filter;
+  inputAddTask;
 
   constructor(private boardService: BoardService) {}
 
@@ -23,6 +24,15 @@ export class BoardComponent implements OnInit {
   onFilterChange(): void {
     this.boardService
       .filterTasks(this.board.id, this.filter)
+      .subscribe((tasks) => {
+        this.tasks = tasks;
+      });
+  }
+
+  onAddClick(): void {
+    console.log('click');
+    this.boardService
+      .addTask(this.board.id, { task: this.inputAddTask })
       .subscribe((tasks) => {
         this.tasks = tasks;
       });

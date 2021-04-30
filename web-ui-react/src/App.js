@@ -22,6 +22,7 @@ function App() {
             <div className="navbar navbar-default">
                 <div className="container">
                     <div className="navbar-brand">{TITLE}</div>
+                    <img src={logo} height="50" />
                 </div>
             </div>
             <div className="container">

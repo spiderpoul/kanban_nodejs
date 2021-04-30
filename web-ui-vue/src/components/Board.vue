@@ -22,9 +22,18 @@
                 </div>
             </div>
             <div class="input-group">
-                <input class="form-control" placeholder="add new task" />
+                <input
+                    class="form-control"
+                    v-model="inputAddTask"
+                    placeholder="add new task"
+                />
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary">Add</button>
+                    <button
+                        class="btn btn-outline-secondary"
+                        v-on:click="onTaskAdd"
+                    >
+                        Add
+                    </button>
                 </div>
             </div>
         </div>
@@ -39,6 +48,7 @@ export default {
         return {
             tasks: [],
             filter: "",
+            inputAddTask: "",
         };
     },
     created() {
@@ -58,6 +68,20 @@ export default {
                 },
                 body: JSON.stringify({
                     text: this.filter,
+                }),
+            })
+                .then((res) => res.json())
+                .then((res) => (this.tasks = res));
+        },
+        onTaskAdd() {
+            console.log("click", this.inputAddTask);
+            fetch("/api/tasks", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    task: { task: this.inputAddTask, boardId: this.board.id },
                 }),
             })
                 .then((res) => res.json())
